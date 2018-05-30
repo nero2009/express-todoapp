@@ -16,7 +16,7 @@ router.post("/add",(req,res,next)=>{
         text: req.body.text,
         body:req.body.body
     }
-	Todo.addTodo(todo(err, todo)=>{
+	Todo.addTodo(todo,(err, todo)=>{
 		if(err){
 			res.send(err)
 		}
@@ -26,17 +26,17 @@ router.post("/add",(req,res,next)=>{
 })
 
 router.delete('/delete/:id',(req,res,next)=>{
-	const query = {_id: ObjectID(req.params.id)}
+	const query = {_id: req.params.id}
 	Todo.removeTodo(query,(err,todo)=>{
 		if(err){
 			res.send(err)
 		}
-		res.status(200)
+		res.redirect('/')
 	})
 })
 
 router.get('/edit/:id',(req,res,next)=>{
-	const id = {_id: ObjectID(req.params.id)}
+	const id = {_id: req.params.id}
 	Todo.getTodoById(id,(err,todo)=>{
 		if(err){
 			res.send(err)
@@ -44,6 +44,20 @@ router.get('/edit/:id',(req,res,next)=>{
 		res.render('edit',{
 			todo:todo
 		})
+	})
+})
+
+router.post('/edit/:id',(req,res,next)=>{
+	const id = {_id: req.params.id}
+	const update={
+		text: req.body.text,
+        body:req.body.body
+	}
+	Todo.updateTodo(id,update,{},(err,todo)=>{
+		if(err){
+			res.send(err)
+		}
+		res.redirect('/')
 	})
 })
 

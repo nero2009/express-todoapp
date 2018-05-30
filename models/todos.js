@@ -2,10 +2,10 @@ const mongoose = require("mongoose")
 
 const todoSchema = mongoose.Schema({
 	body:{
-		type:string
+		type:String
 	},
 	text:{
-		type:string
+		type:String
 	}
 })
 const Todo =(module.exports = mongoose.model("Todo", todoSchema))
