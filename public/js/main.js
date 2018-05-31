@@ -5,10 +5,11 @@ $(document).ready(()=>{
         console.log(id)
         $.ajax({
             type:'DELETE',
-            url: '/todo/delete/'+id,
+            url: '/delete/'+id,
             success:(response)=>{
-                alert('Deleting todo');
-                window.location.href='/'
+                console.log('Deleting todo');
+                window.location='/'
+                return false;
             },
             error:(error)=>{
                 console.log(error)

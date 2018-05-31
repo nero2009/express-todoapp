@@ -18,7 +18,7 @@
             <% todos.forEach((todo)=>{ %>
                 <li class="list-group-item"><%= todo.text %> - <%= todo.body %>
                      
-                     <a class="btn btn-default" href="/todo/edit/<%= todo._id %>" >Edit</a>
+                     <a class="btn btn-default" href="/edit/<%= todo._id %>" >Edit</a>
                      <a data-id="<%= todo._id %>" href="#" class="delete-todo btn btn-danger">Delete</a> 
                 </li>
             <% }) %>
